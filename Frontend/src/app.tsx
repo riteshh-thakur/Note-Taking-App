@@ -90,6 +90,9 @@ export function App() {
   async function handleSignup() {
     try {
       const response = await axios.post("https://note-taking-app-bq1e.onrender.com/signup", { email, password });
+      const { token } = response.data;
+      localStorage.setItem("token", token);
+      setToken(token);
       alert("Sign-up successful! Please log in.");
     } catch (error) {
       console.error("Sign-up error:", error);
