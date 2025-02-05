@@ -40,7 +40,7 @@ export function App() {
   async function loadNotes() {
     if (!token) return;
     try {
-      const response = await axios.get("http://localhost:5000/notes", {
+      const response = await axios.get("https://note-taking-app-bq1e.onrender.com/notes", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setNotes(response.data);
@@ -69,7 +69,7 @@ export function App() {
     if (!token) return;
 
     try {
-      await axios.delete(`http://localhost:5000/notes/${id}`, {
+      await axios.delete(`https://note-taking-app-bq1e.onrender.com/notes/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -89,7 +89,7 @@ export function App() {
 
   async function handleSignup() {
     try {
-      const response = await axios.post("http://localhost:5000/signup", { email, password });
+      const response = await axios.post("https://note-taking-app-bq1e.onrender.com/signup", { email, password });
       alert("Sign-up successful! Please log in.");
     } catch (error) {
       console.error("Sign-up error:", error);
@@ -98,7 +98,7 @@ export function App() {
 
   async function handleLogin() {
     try {
-      const response = await axios.post("http://localhost:5000/login", { email, password });
+      const response = await axios.post("https://note-taking-app-bq1e.onrender.com/login", { email, password });
       const { token } = response.data;
       localStorage.setItem("token", token);
       setToken(token);
